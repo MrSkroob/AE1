@@ -46,18 +46,20 @@ class Tester {
 
 
 public class RunTime<T> {
-    private static final String FILE_PATH = "AssessedExerciseOne/data/intBig.txt";
+    private static final String[] FILE_PATHS = {"AssessedExerciseOne/data/intBig.txt", "AssessedExerciseOne/data/Dutch.txt"};
 
     public static void main(String[] args) {
         Utils comparator = new Utils();
 
-        Tester threeWay = new Tester(new ThreeWayQuicksort<Integer>(comparator)
-        , "Three way quicksort", FILE_PATH);
+        for (String filePath : FILE_PATHS) {
+            Tester threeWay = new Tester(new ThreeWayQuicksort<Integer>(comparator)
+            , "Three way quicksort", filePath);
 
-        Tester medianOfThree = new Tester(new MedianOfThreeQuicksort<Integer>(comparator)
-        , "Median of three quicksort", FILE_PATH);
+            Tester medianOfThree = new Tester(new MedianOfThreeQuicksort<Integer>(comparator)
+            , "Median of three quicksort", filePath);
 
-        medianOfThree.multiTest(5);
-        threeWay.multiTest(5);
+            medianOfThree.multiTest(5);
+            threeWay.multiTest(5);
+        }        
     }
 }
