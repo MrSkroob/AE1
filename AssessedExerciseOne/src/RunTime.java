@@ -15,11 +15,11 @@ class Tester {
     public long singleTest() {
         Integer[] unsortedArray = Utils.readData(filename);
 
-        long start = System.currentTimeMillis();
+        long start = System.nanoTime();
         sortingAlgorithm.sort(unsortedArray);
-        long end = System.currentTimeMillis();
+        long end = System.nanoTime();
         
-        return end - start;
+        return (long) ((end - start) / 10e6);
     }
 
     public void multiTest(int repeats) {
@@ -58,6 +58,10 @@ public class RunTime<T> {
             Tester medianOfThree = new Tester(new MedianOfThreeQuicksort<Integer>(comparator)
             , "Median of three quicksort", filePath);
 
+            Tester insertion = new Tester(new InsertionSort<Integer>(comparator)
+            , "Insertion sort", filePath);
+
+            insertion.multiTest(5);
             medianOfThree.multiTest(5);
             threeWay.multiTest(5);
         }        

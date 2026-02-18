@@ -1,3 +1,5 @@
+import javax.print.attribute.standard.Media;
+
 import SortingAlgorithms.MedianOfThreeQuicksort;
 import SortingAlgorithms.ThreeWayQuicksort;
 
@@ -18,6 +20,10 @@ public class Part1 {
         sorter2.sort(dutchIntegers);
         // For the tests, please see RunTime.java
         
+        System.out.println("Slowwww");
+        Integer[] slow = KillerInput.generateMedianOfThree(dutchIntegers.length);
+        sorter2.sort(slow);
+        System.out.println("Slowwww done");
         // For Part 1.c, please see: KillerInput.java
     }
 }
